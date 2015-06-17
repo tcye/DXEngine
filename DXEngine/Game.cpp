@@ -19,6 +19,12 @@ bool Game::Init(bool fullscreen, int width, int height)
 	if (!InitDirectX())
 		return false;
 
+	if (!theDirector->Init())
+		return false;
+
+	if (!theInput->Init())
+		return false;
+
 	return true;
 }
 

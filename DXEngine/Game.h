@@ -17,6 +17,16 @@ public:
 		return m_hwnd;
 	}
 
+	int GetWidth()
+	{
+		return m_width;
+	}
+
+	int GetHeight()
+	{
+		return m_height;
+	}
+
 protected:
 	bool InitWindow();
 	bool InitDirectX();

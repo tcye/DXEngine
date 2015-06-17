@@ -1,8 +1,8 @@
 #include "Stdafx.h"
 #include "Core.h"
 #include "Game.h"
-#include "Director.h"
 #include "Scene.h"
+#include "Director.h"
 
 bool Director::Init()
 {

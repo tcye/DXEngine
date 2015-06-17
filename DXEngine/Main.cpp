@@ -16,7 +16,7 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	}
 
 	auto scene = Create<Scene>();
-	theDirector->PushScene(scene);
+	theDirector->RunWithScene(scene);
 
 	theGame->Run();
 	theGame->Cleanup();
