@@ -8,6 +8,7 @@
 int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	LPTSTR lpCmdLine, int nCmdShow)
 {
+	AllocConsole();
 
 	if (!theGame->Init(false, 800, 600))
 	{
@@ -20,6 +21,8 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 	theGame->Run();
 	theGame->Cleanup();
+
+	FreeConsole();
 
 	return 0;
 

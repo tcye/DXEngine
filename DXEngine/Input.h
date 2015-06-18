@@ -7,11 +7,15 @@ public:
 	bool Init();
 	void Cleanup();
 
-	bool IsKeyDown(unsigned int key);
-
-	void KeyDown(unsigned int input);
-	void KeyUp(unsigned int input);
+	D3DXVECTOR2 GetMousePosition();
+	bool GetKey(unsigned int);
 
 private:
-	bool m_keys[256];
+	friend class Game;
+	void RefreshInputState();
+
+private:
+	unsigned char m_keys[256];
+	D3DXVECTOR2 m_mousePosition;
+
 };

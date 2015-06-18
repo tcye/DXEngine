@@ -2,6 +2,7 @@
 #include "Core.h"
 #include "Game.h"
 #include "Input.h"
+#include "Time.h"
 #include "Director.h"
 
 static char szTitle[] = "GameEngine";
@@ -50,14 +51,20 @@ void Game::Run()
 		}
 		else
 		{
+			theInput->RefreshInputState();
+			theTime->RefreshTimeStateBeforeFrame();
 			theDirector->Update();
 			theDirector->Render();
+			theTime->RefreshTimeStateAfterFrame();
 		}
 	}
 }
 
 void Game::Cleanup()
 {
+	theInput->Cleanup();
+	theDirector->Cleanup();
+
 	m_device->Release();
 	m_device = nullptr;
 
@@ -160,11 +167,8 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		return 0;
 
 	case WM_KEYDOWN:
-		theInput->KeyDown((unsigned int)wParam);
-		return 0;
-
-	case WM_KEYUP:
-		theInput->KeyUp((unsigned int)wParam);
+		if (wParam == VK_ESCAPE) 
+			PostQuitMessage(0);
 		return 0;
 
 	default:

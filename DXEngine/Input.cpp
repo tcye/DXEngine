@@ -1,15 +1,10 @@
 #include "Stdafx.h"
+#include "Core.h"
+#include "Game.h"
 #include "Input.h"
 
 bool Input::Init()
 {
-	int i;
-
-	for (i = 0; i < 256; i++)
-	{
-		m_keys[i] = false;
-	}
-
 	return true;
 }
 
@@ -18,20 +13,23 @@ void Input::Cleanup()
 
 }
 
-
-void Input::KeyDown(unsigned int input)
+void Input::RefreshInputState()
 {
-	m_keys[input] = true;
+	POINT mousePosit;
+	GetCursorPos(&mousePosit);
+	ScreenToClient(theWindow, &mousePosit);
+	m_mousePosition.x = (float)mousePosit.x;
+	m_mousePosition.y = (float)mousePosit.y;
+
+	GetKeyboardState(m_keys);
 }
 
-
-void Input::KeyUp(unsigned int input)
+bool Input::GetKey(unsigned int vk)
 {
-	m_keys[input] = false;
+	return (m_keys[vk] & 0x80) != 0;
 }
 
-
-bool Input::IsKeyDown(unsigned int key)
+D3DXVECTOR2 Input::GetMousePosition()
 {
-	return m_keys[key];
+	return m_mousePosition;
 }

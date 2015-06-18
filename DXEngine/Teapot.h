@@ -11,5 +11,5 @@ public:
 
 private:
 	ID3DXMesh* m_mesh;
-
+	ID3DXEffect* m_effect;
 };

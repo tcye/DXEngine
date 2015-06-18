@@ -23,8 +23,10 @@ public:
 
 #define theGame (Game::GetInstance())
 #define theDevice (Game::GetInstance()->GetDeviceHandle())
+#define theWindow (Game::GetInstance()->GetWindowHandle())
 #define theDirector (Director::GetInstance())
 #define theInput (Input::GetInstance())
+#define theTime (Time::GetInstance())
 
 class GameObject
 {
