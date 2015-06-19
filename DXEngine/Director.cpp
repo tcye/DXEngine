@@ -69,3 +69,11 @@ void Director::Resume()
 {
 	m_run = true;
 }
+
+Ptr<Scene> Director::GetRunningScene()
+{
+	if (m_scenes.empty())
+		return nullptr;
+	
+	return m_scenes.back();
+}

@@ -17,14 +17,10 @@ void Time::Cleanup()
 
 }
 
-void Time::RefreshTimeStateBeforeFrame()
+void Time::RefreshTimeState()
 {
 	m_curTime = 0.001f * (float)timeGetTime();
 	m_deltaTime = m_curTime - m_lastTime;
-}
-
-void Time::RefreshTimeStateAfterFrame()
-{
 	m_lastTime = m_curTime;
 }
 
@@ -36,9 +32,4 @@ float Time::GetDeltaTime()
 float Time::GetFrameStartTime()
 {
 	return m_curTime;
-}
-
-float Time::GetLastFrameStartTime()
-{
-	return m_lastTime;
 }

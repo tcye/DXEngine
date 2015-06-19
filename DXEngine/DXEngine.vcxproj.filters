@@ -45,6 +45,12 @@
     <ClCompile Include="Time.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="SkyBox.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Core.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Stdafx.h">
@@ -74,10 +80,16 @@
     <ClInclude Include="Time.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="SkyBox.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="Teapot.fx">
+    <None Include="Teapot.fx">
       <Filter>着色器</Filter>
-    </FxCompile>
+    </None>
+    <None Include="SkyBox.fx">
+      <Filter>着色器</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -13,10 +13,13 @@ Camera::Camera()
 
 	m_moveSpeed = 2.0f;
 
-	D3DXMatrixLookAtLH(&m_viewMatrix, &m_position, &m_target, &m_up);
-	D3DXMatrixPerspectiveFovLH(&m_projMatrix, D3DX_PI * 0.5f,
+	D3DXMatrixLookAtLH(&m_matView, &m_position, &m_target, &m_up);
+	D3DXMatrixPerspectiveFovLH(&m_matProj, D3DXToRadian(45.0f),
 		(float)theGame->GetWidth() / (float)theGame->GetHeight(),
 		1.0f, 1000.0f);
+
+	m_matViewProj = m_matView * m_matProj;
+	D3DXMatrixInverse(&m_matViewInv, nullptr, &m_matView);
 }
 
 Camera::~Camera()
@@ -28,7 +31,7 @@ void Camera::Update()
 {
 	static D3DXVECTOR2 lastMousePosition = theInput->GetMousePosition();
 	D3DXMATRIX matViewInv;
-	D3DXMatrixInverse(&matViewInv, nullptr, &m_viewMatrix);
+	D3DXMatrixInverse(&matViewInv, nullptr, &m_matView);
 	
 	float moveX = 0.0f, moveY = 0.0f, moveZ = 0.0f;
 	if (theInput->GetKey(VK_UP) || theInput->GetKey('W'))
@@ -46,7 +49,7 @@ void Camera::Update()
 
 	D3DXMATRIX matTranslation;
 	D3DXMatrixTranslation(&matTranslation, moveX, moveY, moveZ);
-	matTranslation = m_viewMatrix * matTranslation* matViewInv;
+	matTranslation = m_matView * matTranslation* matViewInv;
 	D3DXVec3TransformCoord(&m_position, &m_position, &matTranslation);
 
 	D3DXMATRIX matRotation;
@@ -68,14 +71,15 @@ void Camera::Update()
 	{
 		lastMousePosition = theInput->GetMousePosition();
 	}
-	matRotation = m_viewMatrix * matTranslation * matRotation * matViewInv;
+	matRotation = m_matView * matTranslation * matRotation * matViewInv;
 	D3DXVec3TransformCoord(&m_target, &m_target, &matRotation);
 
-	D3DXMatrixLookAtLH(&m_viewMatrix, &m_position, &m_target, &m_up);
+	D3DXMatrixLookAtLH(&m_matView, &m_position, &m_target, &m_up);
+	m_matViewProj = m_matView * m_matProj;
+	D3DXMatrixInverse(&m_matViewInv, nullptr, &m_matView);
 }
 
 void Camera::Render()
 {
-	theDevice->SetTransform(D3DTS_VIEW, &m_viewMatrix);
-	theDevice->SetTransform(D3DTS_PROJECTION, &m_projMatrix);
+
 }

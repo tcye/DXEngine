@@ -30,6 +30,8 @@ public:
 protected:
 	bool InitWindow();
 	bool InitDirectX();
+	void CleanupWindow();
+	void CleanupDirectX();
 
 private:
 	HINSTANCE m_hinstance;

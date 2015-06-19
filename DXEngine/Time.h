@@ -7,13 +7,11 @@ public:
 	void Cleanup();
 
 	float GetFrameStartTime();
-	float GetLastFrameStartTime();
 	float GetDeltaTime();
 
 private:
 	friend class Game;
-	void RefreshTimeStateBeforeFrame();
-	void RefreshTimeStateAfterFrame();
+	void RefreshTimeState();
 
 private:
 	float m_curTime;

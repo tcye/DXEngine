@@ -26,6 +26,9 @@ bool Game::Init(bool fullscreen, int width, int height)
 	if (!theInput->Init())
 		return false;
 
+	if (!theTime->Init())
+		return false;
+
 	return true;
 }
 
@@ -52,30 +55,36 @@ void Game::Run()
 		else
 		{
 			theInput->RefreshInputState();
-			theTime->RefreshTimeStateBeforeFrame();
+			theTime->RefreshTimeState();
 			theDirector->Update();
 			theDirector->Render();
-			theTime->RefreshTimeStateAfterFrame();
 		}
 	}
 }
 
 void Game::Cleanup()
 {
+	theTime->Cleanup();
 	theInput->Cleanup();
 	theDirector->Cleanup();
 
-	m_device->Release();
-	m_device = nullptr;
+	CleanupDirectX();
+	CleanupWindow();
+}
 
-	m_d3d->Release();
-	m_d3d = nullptr;
-
+void Game::CleanupWindow()
+{
 	DestroyWindow(m_hwnd);
 	m_hwnd = nullptr;
 
 	UnregisterClass(szWindowClass, m_hinstance);
 	m_hinstance = nullptr;
+}
+
+void Game::CleanupDirectX()
+{
+	SAFE_RELEASE(m_device);
+	SAFE_RELEASE(m_d3d);
 }
 
 bool Game::InitWindow()

@@ -16,6 +16,8 @@ public:
 	void ReplaceScene(Ptr<Scene>);
 	void RunWithScene(Ptr<Scene>);
 
+	Ptr<Scene> GetRunningScene();
+
 	void Pause();
 	void Resume();
 

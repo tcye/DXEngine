@@ -93,11 +93,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Core.cpp" />
     <ClCompile Include="Director.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="SkyBox.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -112,12 +114,18 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="SkyBox.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="Teapot.h" />
     <ClInclude Include="Time.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Teapot.fx">
+      <FileType>Document</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SkyBox.fx">
       <FileType>Document</FileType>
     </None>
   </ItemGroup>

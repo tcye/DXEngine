@@ -1,27 +1,31 @@
+
+matrix matWorldViewProj;
+
+void VS(in float3 pos : POSITION,
+	in float3 normal : NORMAL,
+	out float4 oPos : POSITION,
+	out float4 color : COLOR)
+{
+	// Output the position
+	oPos = mul(float4(pos, 1.f), matWorldViewProj);
+	float s = dot(normal, normalize(float3(-1.0f, 1.0f, -1.0f)));
+	if (s < 0.0f)
+		s = 0.0f;
+	
+	color = float4(s, s, s, 0);
+}
+
+void PS(in float4 color : COLOR,
+	out float4 oColor : COLOR)
+{
+	oColor = color;
+}
+
 technique Teapot
 {
 	pass P0
 	{
-		LightType[0] = DIRECTIONAL;
-		LightAmbient[0] = { 0.2f, 0.2f, 0.2f, 1.0f };
-		LightDiffuse[0] = { 1.0f, 1.0f, 1.0f, 1.0f };
-		LightSpecular[0] = { 0.0f, 0.0f, 0.0f, 1.0f };
-		LightDirection[0] = { 1.0f, -1.0f, 1.0f };
-
-		LightPosition[0] = { 0.0f, 0.0f, 0.0f };
-		LightFalloff[0] = 0.0f;
-		LightRange[0] = 0.0f;
-		LightTheta[0] = 0.0f;
-		LightPhi[0] = 0.0f;
-		LightAttenuation0[0] = 1.0f;
-		LightAttenuation1[0] = 0.0f;
-		LightAttenuation2[0] = 0.0f;
-		LightEnable[0] = true;
-
-		MaterialAmbient = { 1.0f, 1.0f, 1.0f, 1.0f };
-		MaterialDiffuse = { 1.0f, 1.0f, 0.0f, 1.0f };
-		MaterialSpecular = { 1.0f, 1.0f, 1.0f, 1.0f };
-		MaterialEmissive = { 0.0f, 0.0f, 0.0f, 1.0f };
-		MaterialPower = 8.0f;
+		VertexShader = compile vs_2_0 VS();
+		PixelShader = compile ps_2_0 PS();
 	}
 }
