@@ -16,6 +16,9 @@
     <Filter Include="着色器">
       <UniqueIdentifier>{3ffb797e-5512-4fe9-b709-524cf1c142a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="JustForTest">
+      <UniqueIdentifier>{eafe5847-afd0-461b-82fa-14402be5c413}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -36,9 +39,6 @@
     <ClCompile Include="Game.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Teapot.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -49,6 +49,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Core.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="XFileObject.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Teapot.cpp">
+      <Filter>JustForTest</Filter>
+    </ClCompile>
+    <ClCompile Include="DirectionalLight.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,9 +80,6 @@
     <ClInclude Include="Game.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Teapot.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -83,13 +89,22 @@
     <ClInclude Include="SkyBox.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="XFileObject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Teapot.h">
+      <Filter>JustForTest</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectionalLight.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Teapot.fx">
-      <Filter>着色器</Filter>
-    </None>
     <None Include="SkyBox.fx">
       <Filter>着色器</Filter>
+    </None>
+    <None Include="Teapot.fx">
+      <Filter>JustForTest</Filter>
     </None>
   </ItemGroup>
 </Project>

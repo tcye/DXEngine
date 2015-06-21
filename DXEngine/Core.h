@@ -28,15 +28,18 @@ public:
 #define theInput (Input::GetInstance())
 #define theTime (Time::GetInstance())
 #define theCamera (Director::GetInstance()->GetRunningScene()->GetCamera())
+#define theLight (Director::GetInstance()->GetRunningScene()->GetLight())
 
 #define SAFE_RELEASE(p) if (p) { p->Release(); p = nullptr; }
 
 class GameObject
 {
 public:
+	GameObject() { }
 	virtual ~GameObject() { }
 	virtual void Update() = 0;
 	virtual void Render() = 0;
+
 };
 
 void RenderWithEffect(ID3DXEffect* effect, const char* tech, std::function<void()> func);

@@ -21,11 +21,12 @@ public:
 
 	const D3DXMATRIX& GetViewProjMatrix()
 	{
-		return m_matViewProj;
+		return m_matView * m_matProj;
 	}
 
 	const D3DXMATRIX& GetViewInvMatrix()
 	{
+		D3DXMatrixInverse(&m_matViewInv, nullptr, &m_matView);
 		return m_matViewInv;
 	}
 
@@ -35,14 +36,19 @@ public:
 	}
 
 private:
-	D3DXVECTOR3 m_position;
-	D3DXVECTOR3 m_target;
-	D3DXVECTOR3 m_up;
+	void UpdateViewMatrix();
 
+private:
+	D3DXVECTOR3 m_position;
+	D3DXVECTOR3 m_right;
+	D3DXVECTOR3 m_up;
+	D3DXVECTOR3 m_look;
+	
 	D3DXMATRIX m_matView;
 	D3DXMATRIX m_matViewInv;
 	D3DXMATRIX m_matProj;
-	D3DXMATRIX m_matViewProj;
 
 	float m_moveSpeed;
+
+
 };

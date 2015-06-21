@@ -15,7 +15,7 @@ const int rect_x = 50;
 const int rect_y = 50;
 const int rect_z = 3;
 
-SkyBox::SkyBox()
+SkyBox::SkyBox(const std::string& cubeTex)
 {
 	// Create a rect before the camera to render the sky
 	D3DXCreateMeshFVF(2, 4,	0, D3DFVF_XYZ, theDevice, &m_mesh);
@@ -50,9 +50,9 @@ SkyBox::SkyBox()
 
 	// Load and set cube texture
 	IDirect3DCubeTexture9* texSky;
-	D3DXCreateCubeTextureFromFile(theDevice, "SkyBox.dds", &texSky);
+	D3DXCreateCubeTextureFromFile(theDevice, cubeTex.c_str(), &texSky);
 	m_effect->SetTexture(m_hTex, texSky);
-	texSky->Release();
+	SAFE_RELEASE(texSky); 
 }
 
 SkyBox::~SkyBox()

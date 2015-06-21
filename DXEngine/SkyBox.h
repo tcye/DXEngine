@@ -3,7 +3,7 @@
 class SkyBox : public GameObject
 {
 public:
-	SkyBox();
+	SkyBox(const std::string& cubeTex);
 	~SkyBox();
 
 	void Update();
