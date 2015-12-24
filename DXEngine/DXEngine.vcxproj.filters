@@ -99,12 +99,4 @@
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="SkyBox.fx">
-      <Filter>着色器</Filter>
-    </None>
-    <None Include="Teapot.fx">
-      <Filter>JustForTest</Filter>
-    </None>
-  </ItemGroup>
 </Project>
